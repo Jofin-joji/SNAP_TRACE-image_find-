@@ -19,7 +19,7 @@ def index():
         folder_url = request.form['drive_url']
         input_image = request.files['face_image']
 
-        # Extract folder ID from Google Drive link
+        
         try:
             folder_id = folder_url.split('/folders/')[1].split('/')[0]
         except IndexError:
