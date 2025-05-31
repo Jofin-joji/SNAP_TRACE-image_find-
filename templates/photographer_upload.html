@@ -1,0 +1,86 @@
+{% extends "_base.html" %}
+
+{% block title %}SnapTrace - Photographer Upload{% endblock %}
+
+{% block content %}
+<main class="content-container">
+    <div class="section-header">
+        <h1 class="title">Photographer Portal</h1>
+        <p class="subtitle">
+            Upload event photos here. They will be processed and made available for users.
+        </p>
+    </div>
+
+    <form id="uploadForm" enctype="multipart/form-data" style="margin-top: 30px;">
+        <div class="form-group">
+            <label for="photosInput">Select Photos (JPG, JPEG, PNG):</label>
+            <input type="file" id="photosInput" name="photos[]" class="form-control-file" multiple accept=".jpg,.jpeg,.png">
+        </div>
+        <button type="submit" id="submitButton" class="button button-primary button-center">Upload & Process Photos</button>
+    </form>
+
+    <div id="uploadStatusMessage" class="status-message info" style="margin-top: 30px;">Ready for uploads.</div>
+</main>
+{% endblock %}
+
+{% block scripts_bottom %}
+<script>
+    // Same JavaScript for upload form as in the previous response (Version 2 photographer_upload.html)
+    // Ensure IDs for photosInput and uploadStatusMessage match
+    document.addEventListener('DOMContentLoaded', () => {
+        const uploadForm = document.getElementById('uploadForm');
+        const photosInputEl = document.getElementById('photosInput');
+        const submitButton = document.getElementById('submitButton');
+        const uploadStatusDiv = document.getElementById('uploadStatusMessage');
+
+        uploadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processing...';
+            uploadStatusDiv.textContent = 'Initializing upload...';
+            uploadStatusDiv.className = 'status-message processing';
+
+
+            if (photosInputEl.files.length === 0) {
+                uploadStatusDiv.textContent = 'Please select at least one photo.';
+                uploadStatusDiv.className = 'status-message error';
+                submitButton.disabled = false;
+                submitButton.textContent = 'Upload & Process Photos';
+                return;
+            }
+
+            const formData = new FormData();
+            for (let i = 0; i < photosInputEl.files.length; i++) {
+                formData.append('photos', photosInputEl.files[i]);
+            }
+
+            try {
+                uploadStatusDiv.textContent = 'Uploading and processing. This may take a moment...';
+                uploadStatusDiv.className = 'status-message processing';
+                const response = await fetch("{{ url_for('photographer_upload_photos') }}", {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.status === 'success') {
+                    uploadStatusDiv.textContent = data.message + (data.details ? ` Details: ${data.details}` : '');
+                    uploadStatusDiv.className = 'status-message success';
+                    photosInputEl.value = ''; 
+                } else {
+                    uploadStatusDiv.textContent = 'Error: ' + (data.message || 'Upload failed.');
+                    uploadStatusDiv.className = 'status-message error';
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                uploadStatusDiv.textContent = 'Client-side error during upload. Check console.';
+                uploadStatusDiv.className = 'status-message error';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Upload & Process Photos';
+            }
+        });
+    });
+</script>
+{% endblock %}

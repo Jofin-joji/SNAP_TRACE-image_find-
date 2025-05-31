@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SnapTrace{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <nav class="app-navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand">SnapTrace</a>
+        <div class="navbar-links">
+            <a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Find My Photos</a>
+            <a href="{{ url_for('photographer_upload_page') }}" class="{% if request.endpoint == 'photographer_upload_page' %}active{% endif %}">Photographer Portal</a>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="app-footer">
+        <p>© {% block year %}2024{% endblock %} SnapTrace. Memories, Illuminated.</p>
+    </footer>
+
+    {% block scripts_bottom %}{% endblock %}
+</body>
+</html>
