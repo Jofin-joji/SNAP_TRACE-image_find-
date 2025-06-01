@@ -171,4 +171,7 @@ cython_debug/
 .pypirc
 
 # Prevent pushing trained Models into GIT
-even_photos
+event_photos
+cert.pem
+key.pem
+openssl.cnf

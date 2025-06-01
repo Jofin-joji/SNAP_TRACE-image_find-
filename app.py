@@ -312,5 +312,3 @@ if __name__ == '__main__':
     # For mobile camera access testing with ngrok, keep host='0.0.0.0' and run ngrok http 5000
     # If using self-signed certs: context = ('cert.pem', 'key.pem'); app.run(..., ssl_context=context)
     app.run(debug=True, host='0.0.0.0', port=5000)
-
- 
