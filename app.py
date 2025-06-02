@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify, send_from_directory,
 import face_recognition
 import os
 import json
-import cv2 # OpenCV for image handling
+import cv2 
 import numpy as np
 import base64
 import io # For handling image bytes
