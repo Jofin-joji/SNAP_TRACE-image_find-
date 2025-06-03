@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap');
 
 :root {
-    --bg-gradient-start: #10141f; /* Deep Dark Blue */
+    --bg-gradient-start: #10141f;
     --bg-gradient-end: #1c2130;   /* Slightly Lighter Dark Blue */
     --container-bg: rgba(40, 48, 70, 0.7); /* Semi-transparent dark container */
     --container-border: rgba(180, 150, 90, 0.3); /* Bronze/Gold border */
