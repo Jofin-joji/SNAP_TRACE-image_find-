@@ -8,7 +8,7 @@ import numpy as np
 import base64
 import io # For handling image bytes
 from werkzeug.utils import secure_filename # For secure file uploads
-import time # For unique filenames (if needed)
+import time 
 import traceback # For detailed error logging
 
 app = Flask(__name__)
@@ -298,7 +298,7 @@ def trigger_preprocessing():
 
 # --- Main Application Execution ---
 if __name__ == '__main__':
-    # Initial check and potential preprocessing run at startup
+    
     if not os.path.exists(ENCODINGS_FILE) and os.path.exists(EVENT_PHOTOS_DIR) and len(os.listdir(EVENT_PHOTOS_DIR)) > 0:
         print(f"'{ENCODINGS_FILE}' not found, but event photos exist. Attempting initial full preprocessing...")
         try: preprocess_event_photos_on_demand() # Full scan for initial setup
