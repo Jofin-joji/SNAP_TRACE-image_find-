@@ -80,8 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     downloadLink.href = `/download/${filename}`;
                     downloadLink.textContent = `Download`;
                     downloadLink.classList.add('download-link');
-                    downloadLink.setAttribute('download', filename); // Suggest filename
-
+                    downloadLink.setAttribute('download', filename); 
                     photoCardDiv.appendChild(img);
                     photoCardDiv.appendChild(downloadLink);
                     resultsGrid.appendChild(photoCardDiv);
