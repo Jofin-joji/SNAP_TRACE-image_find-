@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function setStatus(message, type = 'info') {
         statusMessageDiv.textContent = message;
-        statusMessageDiv.className = `status-message ${type}`; // e.g. status-message info, status-message error
+        statusMessageDiv.className = `status-message ${type}`; 
     }
 
     async function startCamera() {
