@@ -35,21 +35,7 @@
 
 ## 📁 Project Structure
 
-snaptrace/
-├── app.py # Main Flask application
-├── templates/
-│ ├── \_base.html # Base layout template
-│ ├── index.html # User selfie search page
-│ └── photographer_upload.html # Photographer upload page
-├── static/
-│ ├── css/
-│ │ └── style.css # Stylesheet
-│ └── js/
-│ └── script.js # Webcam and frontend logic
-├── event_photos/ # Stores uploaded event photos
-├── known_faces_encodings.json # Face embeddings storage
-├── README.md # Project documentation
-└── (Optional) cert.pem, key.pem # SSL certificates for HTTPS
+<pre><code>snaptrace/ ├── app.py # Main Flask application logic ├── templates/ # HTML templates │ ├── _base.html # (Optional) Base HTML layout │ ├── index.html # User-facing selfie search page │ └── photographer_upload.html # Photographer upload page ├── static/ # Static files (CSS/JS) │ ├── css/ │ │ └── style.css # Main stylesheet │ └── js/ │ └── script.js # Webcam & interaction logic ├── event_photos/ # Directory to store uploaded event photos ├── known_faces_encodings.json # Stores facial embeddings and image metadata ├── README.md # Project documentation (this file) ├── requirements.txt # (Optional) Python dependencies list ├── cert.pem # (Optional) SSL certificate for HTTPS └── key.pem # (Optional) SSL key for HTTPS </code></pre>
 
 ---
 
