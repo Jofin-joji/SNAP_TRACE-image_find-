@@ -35,7 +35,7 @@ if not os.path.exists(EVENT_PHOTOS_DIR):
 KNOWN_ENCODINGS_DATA = []
 ### INSIGHTFACE UPDATE ###
 # Initialize a global variable for the FaceAnalysis model.
-# This will be loaded once when the application starts.
+
 FACE_APP = None
 
 # --- Helper Functions ---
